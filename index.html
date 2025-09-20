@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SENKU APP</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #001a0d, #003322);
+      color: #fff;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Tiêu đề SENKU APP nổi bật */
+    .menu-title {
+      font-size: 46px;
+      font-weight: 900;
+      background: linear-gradient(270deg, #ffcc00, #ff3399, #9933ff, #ff6600);
+      background-size: 600% 600%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientFlow 6s ease infinite;
+      margin: 25px 0;
+      text-shadow: 0 0 25px rgba(255,200,0,0.6), 0 0 45px rgba(200,100,255,0.4);
+    }
+
+    /* Admin chữ nổi bật */
+    .admin-title {
+      font-size: 22px;
+      font-weight: bold;
+      background: linear-gradient(270deg, #39ff14, #00ccff, #ff3399);
+      background-size: 600% 600%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientFlow 8s ease infinite;
+      margin: 20px 0;
+      text-shadow: 0 0 20px rgba(0,255,150,0.6), 0 0 40px rgba(0,200,255,0.4);
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h2 {
+      margin: 15px 0 5px 0;
+      font-size: 22px;
+      color: #39ff14;
+    }
+
+    .sub {
+      font-size: 14px;
+      color: #88ffcc;
+      margin-bottom: 15px;
+    }
+
+    /* Item chức năng */
+    .item {
+      display: flex;
+      align-items: center;
+      background: linear-gradient(145deg, #004d26, #006633);
+      border-radius: 18px;
+      padding: 20px;
+      margin: 14px 20px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 12px rgba(0, 255, 100, 0.4);
+    }
+    .item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 18px rgba(0, 255, 150, 0.6);
+    }
+
+    .item .icon {
+      font-size: 28px;
+      margin-right: 14px;
+    }
+    .item .title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #39ff14;
+    }
+    .item .desc {
+      font-size: 14px;
+      color: #bbffdd;
+    }
+
+    /* Switch button */
+    .switch {
+      margin-left: auto;
+      width: 50px;
+      height: 26px;
+      background: #0a2d1a;
+      border-radius: 20px;
+      position: relative;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+    .switch::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      transition: transform 0.4s ease, background 0.4s ease;
+    }
+    .switch.active {
+      background: linear-gradient(90deg, #39ff14, #00ffcc);
+      box-shadow: 0 0 12px #39ff14;
+    }
+    .switch.active::after {
+      transform: translateX(24px);
+      background: #003322;
+    }
+
+    /* Nút kích hoạt */
+    .buttons {
+      display: flex;
+      justify-content: center;
+      margin: 20px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 14px 22px;
+      margin: 8px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+    .btn.green { background: #39ff14; color: #000; }
+    .btn.red { background: #cc0033; color: #fff; }
+    .btn.glow {
+      background: #111;
+      color: #39ff14;
+      border: 1px solid #39ff14;
+    }
+    .btn.glow.active {
+      background: linear-gradient(90deg, #39ff14, #00ffcc);
+      box-shadow: 0 0 25px rgba(0,255,100,0.9);
+      color: #000;
+      transform: scale(1.05);
+    }
+    .btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 18px rgba(0,255,100,0.5);
+    }
+
+    /* AIM Chest & Body */
+    .aim-item.active {
+      background: linear-gradient(90deg, #39ff14, #00ffcc);
+      box-shadow: 0 0 30px rgba(0,255,100,0.9);
+      color: #000;
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu-title">SENKU APP</div>
+
+  <main>
+    <!-- TÍNH NĂNG GAME -->
+    <h2>TÍNH NĂNG GAME</h2>
+    <div class="sub">Chế độ & tính năng tối ưu cho chơi game</div>
+
+    <div class="item">
+      <div class="icon">🖐️</div>
+      <div>
+        <div class="title">Nhạy Màn</div>
+        <div class="desc">Tăng nhạy màn hình</div>
+      </div>
+      <div class="switch"></div>
+    </div>
+
+    <div class="item">
+      <div class="icon">🎯</div>
+      <div>
+        <div class="title">Bám Đầu</div>
+        <div class="desc">Tăng tỉ lệ bám đầu</div>
+      </div>
+      <div class="switch"></div>
+    </div>
+
+    <div class="item">
+      <div class="icon">❤️</div>
+      <div>
+        <div class="title">Nhẹ Tâm</div>
+        <div class="desc">Giúp kéo tâm mượt mà</div>
+      </div>
+      <div class="switch"></div>
+    </div>
+
+    <div class="item">
+      <div class="icon">🎯</div>
+      <div>
+        <div class="title">Giảm Lạc Đạn</div>
+        <div class="desc">Tăng độ chính xác</div>
+      </div>
+      <div class="switch"></div>
+    </div>
+
+    <div class="item">
+      <div class="icon">⚙️</div>
+      <div>
+        <div class="title">Fix Rung Tâm</div>
+        <div class="desc">Ổn định độ rung</div>
+      </div>
+      <div class="switch"></div>
+    </div>
+
+    <div class="item">
+      <div class="icon">💨</div>
+      <div>
+        <div class="title">Giảm Lố</div>
+        <div class="desc">Kéo không bị quá đầu</div>
+      </div>
+      <div class="switch"></div>
+    </div>
+
+    <div class="buttons">
+      <button class="btn green" id="activate-all">Kích Hoạt Tất Cả</button>
+      <button class="btn red" id="deactivate-all">Tắt Tất Cả</button>
+    </div>
+
+    <div class="buttons">
+      <button class="btn glow" id="optimize">⚡ Optimize Vip</button>
+      <button class="btn glow" id="prime">🚀 Hiệu Suất Prime</button>
+    </div>
+
+    <!-- TÍNH NĂNG PHẦN MỀM THỨ 3 -->
+    <h2>TÍNH NĂNG PHẦN MỀM THỨ 3</h2>
+    <div class="sub">Chọn chế độ bám mục tiêu</div>
+
+    <div class="item aim-item" id="aim-chest">
+      <div class="icon">🎯</div>
+      <div>
+        <div class="title">AIM CHEST</div>
+        <div class="desc">Khóa mục tiêu vào ngực</div>
+      </div>
+    </div>
+
+    <div class="item aim-item" id="aim-body">
+      <div class="icon">🎯</div>
+      <div>
+        <div class="title">AIM BODY</div>
+        <div class="desc">Khóa mục tiêu vào thân</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Admin chữ nổi bật -->
+  <div class="admin-title">👑 Admin: Nguyen Minh</div>
+
+  <script>
+    // Bật tắt switch
+    const switches = document.querySelectorAll('.switch');
+    switches.forEach(sw=>{
+      sw.addEventListener('click',()=>{
+        sw.classList.toggle('active');
+      });
+    });
+
+    // Optimize & Prime
+    const glowBtns = document.querySelectorAll('.btn.glow');
+
+    glowBtns.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        btn.classList.toggle('active');
+      });
+    });
+
+    // AIM Chest & Body chỉ bật 1 cái
+    const aimItems = document.querySelectorAll('.aim-item');
+    aimItems.forEach(item=>{
+      item.addEventListener('click',()=>{
+        if(item.classList.contains('active')){
+          item.classList.remove('active');
+        } else {
+          aimItems.forEach(i=>i.classList.remove('active'));
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // Nút Kích Hoạt Tất Cả
+    document.getElementById('activate-all').addEventListener('click',()=>{
+      switches.forEach(sw=>sw.classList.add('active'));
+      glowBtns.forEach(btn=>btn.classList.add('active'));
+    });
+
+    // Nút Tắt Tất Cả
+    document.getElementById('deactivate-all').addEventListener('click',()=>{
+      switches.forEach(sw=>sw.classList.remove('active'));
+      glowBtns.forEach(btn=>btn.classList.remove('active'));
+    });
+  </script>
+
+</body>
+</html>
